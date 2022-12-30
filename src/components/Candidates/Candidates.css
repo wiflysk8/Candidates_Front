@@ -1,0 +1,27 @@
+.App {
+  padding: 100px 20px;
+}
+
+.candidates {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: white;
+  border: 1px solid rgba(204, 204, 204, 0.856);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.candidate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 6px 8px;
+  background-color: rgba(128, 128, 128, 0.048);
+}
+
+.candidateField {
+  display: flex;
+  gap: 10px;
+}

@@ -1,0 +1,28 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  position: fixed;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.items {
+  padding: 0 20px;
+  width: 18%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2rem;
+}
+
+.link:hover {
+  color: #ccc;
+  text-decoration: underline;
+}
