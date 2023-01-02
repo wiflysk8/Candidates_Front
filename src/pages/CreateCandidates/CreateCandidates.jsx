@@ -13,6 +13,7 @@ const CreateCandidates = () => {
   const [cv, setCv] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const { getCandidates } = useContext(CandidatesContext);
+  const [file, setFile] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -92,12 +93,16 @@ const CreateCandidates = () => {
             <label>CV candidato:</label>
             <input
               type="file"
-              onChange={(event) => setCv(event.target.files[0])}
+              onChange={(event) => {
+                setCv(event.target.files[0]);
+                setFile(event.target.files[0].name);
+              }}
             />
-            <p className="inputFile">
-              Subir archivo
-              <IoIosArrowRoundUp />
-            </p>
+          </div>
+          <div style={{ display: "flex" }}>
+            <input type="text" value={file} style={{ height: "15px" }} />
+            <p className="inputFile">Subir archivo</p>
+            <IoIosArrowRoundUp size={"1.2em"} />
           </div>
           <button type="submit" style={{ marginTop: "30px" }}>
             Enviar
