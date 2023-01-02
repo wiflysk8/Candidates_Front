@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import Candidates from "./components/Candidates/Candidates";
-import CreateCandidates from "./components/CreateCandidates/CreateCandidates";
+import Candidates from "./pages/Candidates/Candidates";
+import CreateCandidates from "./pages/CreateCandidates/CreateCandidates";
 
 const Routesfile = () => {
   return (

@@ -67,3 +67,21 @@ input[type="file"]::before {
 input[type="file"] {
   opacity: 0;
 }
+
+.candidatesForm {
+  position: absolute;
+  top: 100px;
+}
+
+.fieldsetCentered {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.inputFile {
+  text-decoration: underline;
+  position: relative;
+  left: -200px;
+  z-index: -1;
+}

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { CandidatesContext } from "../../contexts/CandidatesContext";
 import "./CreateCandidates.css";
 
 const CreateCandidates = () => {
@@ -10,6 +11,7 @@ const CreateCandidates = () => {
   const [email, setEmail] = useState("");
   const [cv, setCv] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const { getCandidates } = useContext(CandidatesContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,6 +28,7 @@ const CreateCandidates = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
+        getCandidates();
         setSubmitted(true);
       })
       .catch((error) => {
@@ -38,7 +41,7 @@ const CreateCandidates = () => {
   };
 
   return (
-    <section style={{ position: "absolute", top: "100px" }}>
+    <section className="candidatesForm">
       {!submitted ? (
         <form onSubmit={handleSubmit}>
           <h1>Añadir candidato</h1>
@@ -84,28 +87,13 @@ const CreateCandidates = () => {
             </fieldset>
             <br />
           </div>
-          <div
-            style={{
-              gap: "20px",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
+          <div className="fieldsetCentered">
             <label>CV candidato:</label>
             <input
               type="file"
               onChange={(event) => setCv(event.target.files[0])}
             />
-            <p
-              style={{
-                textDecoration: "underline",
-                position: "relative",
-                left: "-200px",
-                zIndex: "-1",
-              }}
-            >
-              Subir archivo
-            </p>
+            <p className="inputFile">Subir archivo</p>
           </div>
           <button type="submit" style={{ marginTop: "30px" }}>
             Enviar
