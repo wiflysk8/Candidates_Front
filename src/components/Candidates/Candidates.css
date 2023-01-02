@@ -15,7 +15,6 @@
 .candidate {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 40px;
   padding: 6px 8px;
   background-color: rgba(128, 128, 128, 0.048);
