@@ -1,5 +1,6 @@
 .App {
-  padding: 120px 20px;
+  display: flex;
+  padding: 80px 0;
 }
 
 .candidates {

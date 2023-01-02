@@ -44,8 +44,8 @@ const CreateCandidates = () => {
     <section className="candidatesForm">
       {!submitted ? (
         <form onSubmit={handleSubmit}>
-          <h1>Añadir candidato</h1>
           <div className="formCentered">
+            <h1 style={{ alignSelf: "flex-start" }}>Añadir candidato</h1>
             <fieldset>
               <label>
                 Nombre candidato:

@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <CandidatesProvider>
-        <div className="app">
+        <div className="App">
           <Routesfile />
         </div>
       </CandidatesProvider>
