@@ -13,13 +13,15 @@ const CreateCandidates = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const candidate = { name, surname, phone, email, cv };
-    fetch("http://localhost:3001/candidates", {
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("surname", surname);
+    formData.append("phone", phone);
+    formData.append("email", email);
+    formData.append("cv", cv);
+    fetch("http://localhost:5000/candidates", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(candidate),
+      body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
@@ -89,15 +91,21 @@ const CreateCandidates = () => {
               alignItems: "center",
             }}
           >
-            <label>
-              CV candidato:
-              <input
-                type="text"
-                value={cv}
-                onChange={(event) => setCv(event.target.value)}
-              />
-            </label>
-            <p>Subir archivo</p>
+            <label>CV candidato:</label>
+            <input
+              type="file"
+              onChange={(event) => setCv(event.target.files[0])}
+            />
+            <p
+              style={{
+                textDecoration: "underline",
+                position: "relative",
+                left: "-200px",
+                zIndex: "-1",
+              }}
+            >
+              Subir archivo
+            </p>
           </div>
           <button type="submit" style={{ marginTop: "30px" }}>
             Enviar
@@ -105,8 +113,10 @@ const CreateCandidates = () => {
         </form>
       ) : (
         <>
-          <div>Candidato creado con éxito</div>
-          <button onClick={goToCandidates}>Ver listado de candidatos</button>
+          <h3>Candidato creado con éxito</h3>
+          <button onClick={goToCandidates} style={{ marginTop: "40px" }}>
+            Ver listado de candidatos
+          </button>
         </>
       )}
     </section>

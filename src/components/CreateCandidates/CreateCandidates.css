@@ -49,3 +49,21 @@ fieldset {
   flex-direction: column;
   align-items: center;
 }
+
+input[type="file"] {
+  background-color: #00b8d4;
+  border: none;
+}
+
+input[type="file"]::before {
+  content: "Select file";
+  display: inline-block;
+  background-color: #00b8d4;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+input[type="file"] {
+  opacity: 0;
+}

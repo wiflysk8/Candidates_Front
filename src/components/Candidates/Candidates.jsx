@@ -9,7 +9,7 @@ const Candidates = () => {
 
   const getCandidates = () => {
     return axios
-      .get("http://localhost:3001/candidates")
+      .get("http://localhost:5000/candidates")
       .then((response) => response.data)
       .then((candidates) => {
         setCandidates(candidates);
@@ -21,7 +21,7 @@ const Candidates = () => {
 
   const onDelete = (_id) => {
     return axios
-      .delete(`http://localhost:3001/candidates/${_id}`)
+      .delete(`http://localhost:5000/candidates/${_id}`)
       .then(() => {
         getCandidates();
       })
@@ -30,7 +30,10 @@ const Candidates = () => {
       });
   };
 
-  console.log(candidates);
+  const onCVDowload = (candidate) => {
+    // Open the link to the CV in a new tab
+    window.open(candidate.cv, "_blank");
+  };
 
   useEffect(() => {
     getCandidates();
@@ -42,23 +45,38 @@ const Candidates = () => {
 
   return (
     <div className="App">
-      <h1>CANDIDATOS: </h1>
       {candidates.length > 0 ? (
         <div className="candidates">
+          <h1>CANDIDATOS: </h1>
           {candidates.map((candidate) => (
             <div className="candidate" key={candidate._id}>
-              <div>Nombre: {candidate.name}</div>
-              <div>Apellidos: {candidate.surname}</div>
-              <div>Teléfono: {candidate.phone}</div>
-              <div>Email: {candidate.email}</div>
-
-              <button onClick={() => onDelete(candidate._id)}>Eliminar</button>
+              <div>
+                <strong>Nombre: </strong>
+                {candidate.name}
+              </div>
+              <div>
+                <strong>Apellidos: </strong>
+                {candidate.surname}
+              </div>
+              <div>
+                <strong>Teléfono: </strong> {candidate.phone}
+              </div>
+              <div>
+                <strong>Email: </strong> {candidate.email}
+              </div>
+              <button onClick={() => onCVDowload(candidate)}>Abrir CV</button>
+              <button
+                onClick={() => onDelete(candidate._id)}
+                style={{ background: "red" }}
+              >
+                Eliminar candidato
+              </button>
             </div>
           ))}
         </div>
       ) : (
-        <div>
-          <p>No existen candidatos actualmente</p>
+        <div style={{ textAlign: "center" }}>
+          <h3>No existen candidatos actualmente</h3>
           <button onClick={onNavigate}>Crear candidato</button>
         </div>
       )}
