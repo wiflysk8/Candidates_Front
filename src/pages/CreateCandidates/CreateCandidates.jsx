@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CandidatesContext } from "../../contexts/CandidatesContext";
 import "./CreateCandidates.css";
+import { IoIosArrowRoundUp } from "react-icons/io";
 
 const CreateCandidates = () => {
   const navigate = useNavigate();
@@ -93,7 +94,10 @@ const CreateCandidates = () => {
               type="file"
               onChange={(event) => setCv(event.target.files[0])}
             />
-            <p className="inputFile">Subir archivo</p>
+            <p className="inputFile">
+              Subir archivo
+              <IoIosArrowRoundUp />
+            </p>
           </div>
           <button type="submit" style={{ marginTop: "30px" }}>
             Enviar
