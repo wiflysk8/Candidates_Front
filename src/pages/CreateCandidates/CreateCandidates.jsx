@@ -13,7 +13,7 @@ const CreateCandidates = () => {
   const [cv, setCv] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const { getCandidates } = useContext(CandidatesContext);
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,6 +23,16 @@ const CreateCandidates = () => {
     formData.append("phone", phone);
     formData.append("email", email);
     formData.append("cv", cv);
+    if (
+      name === "" ||
+      surname === "" ||
+      phone === "" ||
+      email === "" ||
+      cv === ""
+    ) {
+      alert("Rellena todos los campos");
+      return;
+    }
     fetch("http://localhost:5000/candidates", {
       method: "POST",
       body: formData,
@@ -100,7 +110,12 @@ const CreateCandidates = () => {
             />
           </div>
           <div style={{ display: "flex" }}>
-            <input type="text" value={file} style={{ height: "15px" }} />
+            <input
+              type="text"
+              value={file}
+              style={{ height: "15px" }}
+              onChange={() => setFile("Cv.pdf")}
+            />
             <p className="inputFile">Subir archivo</p>
             <IoIosArrowRoundUp size={"1.2em"} />
           </div>
