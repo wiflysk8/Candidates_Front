@@ -32,8 +32,10 @@ button {
 }
 
 button:hover {
-  background-color: aqua;
-  color: black;
+  background-color: white;
+  color: blue;
+  border: 1px solid blue;
+  transition: all 0.3s ease-in-out;
 }
 
 fieldset {

@@ -25,10 +25,7 @@ const Item = ({ candidate }) => {
         <strong>Email: </strong> {candidate.email}
       </div>
       <button onClick={() => onCVDowload(candidate)}>Abrir CV</button>
-      <button
-        onClick={() => onDelete(candidate._id)}
-        style={{ background: "red" }}
-      >
+      <button onClick={() => onDelete(candidate._id)} className="deleteBtn">
         Eliminar candidato
       </button>
     </>

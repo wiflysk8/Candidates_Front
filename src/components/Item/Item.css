@@ -1,0 +1,11 @@
+.deleteBtn {
+  background-color: red;
+  color: white;
+}
+
+.deleteBtn:hover {
+  background-color: white;
+  color: red;
+  border: 1px solid red;
+  transition: all 0.3s ease-in-out;
+}
